@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run a multi-line script
+      run: |
+        perl -c scripts/perl.prov
+        perl -c scripts/perl.req
